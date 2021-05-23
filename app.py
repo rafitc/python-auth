@@ -31,6 +31,7 @@ def login():
         password = request.form['password']
         user = auth.sign_in_with_email_and_password(username, password)
         print(user)
+        return render_template('event.html', msg=msg)
         # if account:
         # 	session['loggedin'] = True
         # 	session['id'] = account['id']
@@ -41,7 +42,9 @@ def login():
         # 	msg = 'Incorrect username / password !'
     return render_template('login.html', msg=msg)
 
-
+@app.route('/event')
+def event():
+    return render_template('event.html')
 
 @app.route('/logout')
 def logout():
